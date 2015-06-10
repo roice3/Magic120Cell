@@ -1,0 +1,172 @@
+From Initial Feedback:
+
+From Melinda 1:
+
+*-  "Scramble Custom"
+
+*-  Play a beep when solved state is reached.
+
+*-  Substitude undo for move inverse
+
+*-  way to peel away logical layers (described as clipping plane).  Have description in UI describing diff.
+
+*-  make ctrl+shift+click last as long as mouse is held down (so pressing escape is not required).
+
+*-  reverse piece finder.
+
+*-  Help->About with name, copyright, version number.
+
+From Melinda 2:
+
+-  hidden faces in wireframe?
+
+-  antialias the edges
+
+-  continual spinning motion
+
+*-  esc to stop a solve
+
+-  Add a mark to the log file after the scramble  m|
+
+*-  slice cuts like megaminx.  (I think an option, checkMenu, would be good here).
+
+*-  ctrl+right click as inverse 4D rotation.
+
+-  rename the program:  Hyperminx or MagicDodec4D, MagicDodecaplex4D?
+
+-  source code
+
+From Me:
+
+Changing the rotation rate during a twist causes ugliness.  This could be fixed by handling that parameter specially (not calling settingsChanged).
+
+MC5D full scrambling should clear out twists like M120Cell
+
+I really need to save out the colors with the log file because they affect the nature of the puzzle.
+
+Initialize those vars in the highlight stickers function (the ones before findPiece()).  Might as well try to be as crash safe as we can.
+
+I wonder if picking should not draw dimmed cells.  I think it is perhaps more confusing that way...
+
+idea: way to click a piece and have non-visible stickers of that piece be considered the twist sticker. similar to slicemasks in some ways.
+
+do the 2,3,4 increments of twists?
+
+sqrt symbol into about: this messes up p4 unfortunately, so don't checkin with that...
+
+Inverted cells moving into non-inverted cell location doesn't fade.
+
+corners only puzzle would be cool (r1 = r1 = r3 = 0.00001 and don't draw other pieces).  3C only (same but r3=1) also cool or 2C only.
+
+Nelson suggestions:
+
+- don't beep unless scramble has been done.
+- move counter
+
+
+
+Wish list:
+
+alpha ordering can suck.
+
+configurable colors
+
+view rotations
+make sure undo/redo work, and loading from file. (we'll have to save out the current view matrix, ugh!!)
+
+macros
+
+progress indicator
+highlight unsolved pieces even
+
+piece finder
+
+display hidden portions of a piece when a sticker is clicked like in MC5D (shift+click)
+(make current center finder always show piece regardless of view settings?)
+
+UI bug: saving settings dialog ok/cancel buttons get cutoff on my computer.
+
+
+
+Things I did in Magic120Cell that would be nice to add to MC5D
+
+improve congratulatory message handling to be as good as in Magic120Cell.
+
+alpha blending of stickers
+
+better 3D view transforms (not locked)
+
+fix bug with window clicking (items already checked out).
+
+other stuff I can't remember?
+
+
+
+view rotation thoughts:
+
+maybe do like Jenn (leave reset button to get back to standard view).
+have separate viewTransform() methods like the current cellTransforms and settingTransforms.
+
+maybe it would be better if ctrl+clicking just applied whatever twist was going on to everything instead of trying to auto-calc recentering?  this might be difficult to make performant.
+
+for now I could just have a "reverse" option.
+
+
+
+sticker finding...
+we need to:
+
+(1) highlight which cell a sticker goes to  (shift+ctrl+click)
+(2) find a piece like in MC5D
+(3) display hidden portions of a piece when a sticker is clicked like in MC5D (shift+click)
+
+Option to only turn on centers and stickers of certain colors could be useful?
+
+
+
+performance:
+
+loading settings is slow because the entire puzzle colors get reset with every color reset
+enable redraw will fix this!!!
+
+Display listing constant parts could be a *huge* speed benefit.
+
+Profile twisting - I need to speed that up (I thought separating out calculation of rotation matrix could do the trick but it didn't).
+
+
+
+Code Cleanup:
+
+clever way with templates or delegates or something to reduce all the repeated code in primitives file???
+
+make access to faces/points of dodecahedron private.
+
+CVector3D from CVector4D
+
+search for all XXXs in the code.
+
+better ordering of sticker generation (not necessary except that it kinda bugs my aesthetic sense).
+
+const review.
+
+vertex() method in multiple places.
+
+Replace all double[][4] function arguments with CMatrix4D
+
+
+
+
+ideas but questionable if worth the effort now:
+
+Contrast on some bright colors (e.g. 0,255,255) not so great for really flat cells.  Maybe play with this to improve or maybe Change default colors?
+
+avoid 2-sided lighting? (if I turn it off I bet a lot of the polygons will go dark).
+
+make an option to do face twists in increments of 2,3, or 4.
+
+savable colormap file (maybe just in the settings).
+
+You could fake a solution by setting all colors to the same value, scrambling, then making a move. Maybe this isn't a big deal.
+
+
+
