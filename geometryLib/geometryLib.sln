@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "geometryLib", "geometryLib.vcproj", "{F081AF41-C7F4-49C1-A518-12F34832A243}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F081AF41-C7F4-49C1-A518-12F34832A243}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F081AF41-C7F4-49C1-A518-12F34832A243}.Debug|Win32.Build.0 = Debug|Win32
+		{F081AF41-C7F4-49C1-A518-12F34832A243}.Release|Win32.ActiveCfg = Release|Win32
+		{F081AF41-C7F4-49C1-A518-12F34832A243}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
