@@ -44,6 +44,7 @@ namespace Magic120Cell
 		// keyboard helpers
 		static bool ShiftDown();
 		static bool CtrlDown();
+		static bool AltDown();
 
 	public:
 

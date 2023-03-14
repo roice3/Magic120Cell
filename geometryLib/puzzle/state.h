@@ -26,7 +26,7 @@ public:
 	void commitChanges( int changedCells[], int num );
 
 	// Setup full colors.
-	void setupFullColors();
+	void setupFullColors( unsigned int seed = 0 );
 	void setupAntipodalColors();
 
 	bool getScrambled() const { return m_scrambled; }

@@ -290,6 +290,12 @@ CubeFrame::MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventAr
 	if( e->Button == System::Windows::Forms::MouseButtons::Left || 
 		e->Button == System::Windows::Forms::MouseButtons::Right )
 	{
+		if( ShiftDown() && CtrlDown() && AltDown() )
+		{
+			m_puzzle->regenColors();
+			return;
+		}
+
 		bool left = e->Button == System::Windows::Forms::MouseButtons::Left;
 		
 		int stickerHash = m_renderer->renderForPicking( 
@@ -626,6 +632,12 @@ bool
 CubeFrame::CtrlDown() 
 {
 	return (Form::ModifierKeys & Keys::Control) == Keys::Control;
+}
+
+bool
+CubeFrame::AltDown()
+{
+	return (Form::ModifierKeys & Keys::Alt) == Keys::Alt;
 }
 
 }

@@ -317,6 +317,13 @@ CPuzzle::resetView()
 	viewChanged();
 }
 
+void
+CPuzzle::regenColors()
+{
+	int rand = std::rand();
+	m_state.setupFullColors( rand );
+}
+
 bool 
 CPuzzle::isSolved() const
 {

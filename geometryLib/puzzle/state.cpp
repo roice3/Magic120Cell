@@ -82,13 +82,13 @@ CState::initializeState()
 }
 
 void 
-CState::setupFullColors() 
+CState::setupFullColors( unsigned int seed )
 {
 	m_colors.resize( m_nCells );
 	if( m_nCells <= 0 )
 		return;
 
-	srand( 0 );
+	srand( seed );
 
 	// First cell white.
 	m_colors[0] = CColor();

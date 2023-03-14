@@ -79,6 +79,9 @@ public:
 	// Reset the view since it can get all goofy looking.
 	virtual void resetView();
 
+	// Randomly regen colors.
+	void regenColors();
+
 	// Are we solved?
 	bool isSolved() const;
 	bool canShowSolvedMessage();
